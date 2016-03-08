@@ -42,10 +42,8 @@ public class myWebCrawler {
 	private HashMap<String, HashSet<String>> contact = new HashMap<String, HashSet<String>>();
 
 	public static void main(String[] args) {
-		//myWebCrawler c = new myWebCrawler("http://www.easyjet.com/en/help/contact-us/telephone");	
 		//myWebCrawler c = new myWebCrawler("http://www.oracle.com/in/corporate/contact/index.html");
-		myWebCrawler c ;
-		c= new myWebCrawler("http://www.baldor.com/contact/contact-us/general-inquiry/");
+		myWebCrawler c = new myWebCrawler("http://www.tcs.com/contact/Pages/default.aspx");		
 		c.myFinder();
 		System.out.println("All links & text :"+c.urls);
 		System.out.println("All visible text :"+c.doc.text());
@@ -68,8 +66,7 @@ public class myWebCrawler {
 		} catch (IOException e) {
 			System.err.println("Cant visit :"+e);
 		}		
-	}
-	
+	}	
 	private void Social() {
 		Elements links = doc.select("a[href]");		
 		for (Element link : links) {
@@ -86,7 +83,6 @@ public class myWebCrawler {
 		if(g.size()>0)social.put("google", g);
 		if(yt.size()>0)social.put("youtube",yt );		
 	}
-
 	private void Contact() {
 		mymacher = REmail.matcher(doc.toString());
 		while(mymacher.find()) mail.add(doc.toString().substring( mymacher.start(), mymacher.end()));
@@ -94,8 +90,7 @@ public class myWebCrawler {
 		while(mymacher.find()) phone.add(doc.toString().substring( mymacher.start(), mymacher.end()));
 		if(phone.size()>0)contact.put("Phone", phone );
 		if(mail.size()>0)contact.put("Mail", mail );
-	}
-	
+	}	
 	private void URLs() {
 		Elements links = doc.select("a[href]");		
 		for (Element link : links) 	urls.add(link.attr("abs:href"));//System.out.println("Hypertext :"+link.text());
