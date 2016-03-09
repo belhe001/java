@@ -23,7 +23,16 @@ import javax.ws.rs.core.MediaType;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-
+/**
+* The Dynamic WEB project using java-RESTful implementation,
+* With a feature to display clients informations and echo method.
+* /info to get clients information.
+* /echo/* to get path & parsed query.
+*
+* @author  Prasad Belhe
+* @version 1.0
+* @since   2016-03-08
+**/
 
 @Path("/")
 //http://localhost:8080/myREST/
